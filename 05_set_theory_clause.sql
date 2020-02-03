@@ -99,8 +99,7 @@ ORDER BY
   capital;
 
 
-
-/* Semi-join *
+/* Semi-join */
 -- Select distinct fields
 SELECT
   DISTINCT name -- From languages
@@ -118,5 +117,18 @@ ORDER BY
   name;
 
 
-
+/* ANTI-JOIN */
+-- 3. Select fields
+SELECT
+  code,
+  name -- 4. From Countries
+FROM countries -- 5. Where continent is Oceania
+WHERE
+  continent = 'Oceania' -- 1. And code not in
+  AND code NOT IN -- 2. Subquery
+  (
+    SELECT
+      code
+    FROM currencies
+  );
 
